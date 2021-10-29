@@ -8,3 +8,12 @@ abstract class HomePageState extends Equatable {
 }
 
 class HomePageInitial extends HomePageState {}
+
+class WeatherLoaded extends HomePageState {
+  Weather weather;
+  List<Weather> weather_list;
+  WeatherLoaded({
+    required this.weather,
+    required this.weather_list,
+  });
+}
