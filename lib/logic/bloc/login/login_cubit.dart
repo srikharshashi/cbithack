@@ -1,36 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_custom_firebase/services/repository.dart';
+import 'package:bloc_custom_firebase/models/user_model.dart';
+import 'package:bloc_custom_firebase/services/fb_auth.dart';
+import 'package:bloc_custom_firebase/services/fb_database.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   FB_Service fb_service;
+  DatabaseService databaseService;
 
-  LoginCubit({required this.fb_service}) : super(LoginInitial());
+  LoginCubit({required this.fb_service, required this.databaseService})
+      : super(LoginInitial());
 
-  void signin(String email, String password) {
+  void signin(String email, String password) async {
     emit(LoginLoad());
     fb_service.signin(email, password).then((value) {
       if (value) {
-        emit(LoginSucesss(email: email));
-        //  Else make it listen to the stream and make it navigate only if
-        //  There is a user which is non null
+        //go to database and fecth user data
+         databaseService.getusermap(email).then((value) {
+          User user = User.frommap(value);
+
+          emit(LoginSucesss(user: user));
+        });
+        
       } else {
         emit(LoginFail());
       }
     });
   }
 
-  void signinwithgoogle() {
-    emit(LoginLoad());
-
-    fb_service.signInWithGoogle().then((value) {
-      if (value) {
-        emit(LoginSucesss(email: fb_service.get_user_email()));
-        //  Else make it listen to the stream and make it navigate only if
-        //  There is a user which is non null
-      } else {
-        emit(LoginFail());
-      }
-    });
-  }
+ 
 }

@@ -1,6 +1,6 @@
+
 import 'package:bloc/bloc.dart';
-import 'package:bloc_custom_firebase/services/repository.dart';
-import 'package:meta/meta.dart';
+import 'package:bloc_custom_firebase/services/fb_auth.dart';
 
 part 'register_state.dart';
 
@@ -9,19 +9,15 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterCubit({required this.fb_service}) : super(RegisterInitial());
 
+  void signin(String email, String password,String name) async {
+    emit(RegisterLoad());
 
-void signin(String email,String password) async
-{
-  emit(RegisterLoad());
-
-   fb_service.registerwithEmail(email, password).then(
-       (value) {
-         if (value)
-           emit(RegisterSuccess());
-         else
-           emit(RegisterFail());
-       }
-   );
-
-}
+    fb_service.registerwithEmail(email, password).then((value) {
+      if (value) {
+        
+        emit(RegisterSuccess(name: name,email: email));
+      } else
+        emit(RegisterFail());
+    });
+  }
 }

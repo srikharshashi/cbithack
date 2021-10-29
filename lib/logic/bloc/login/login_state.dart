@@ -7,9 +7,9 @@ class LoginInitial extends LoginState {}
 class LoginFail extends LoginState {}
 
 class LoginSucesss extends LoginState {
-  String email;
+  User user;
   LoginSucesss({
-    required this.email,
+    required this.user,
   });
 }
 

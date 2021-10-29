@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:bloc_custom_firebase/services/repository.dart';
+import 'package:bloc_custom_firebase/services/fb_auth.dart';
 import 'package:meta/meta.dart';
 
 part 'logout_state.dart';
