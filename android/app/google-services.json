@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1001268379034",
+    "project_id": "hack-cbit",
+    "storage_bucket": "hack-cbit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001268379034:android:171e13b3ed5db1280f8e23",
+        "android_client_info": {
+          "package_name": "com.example.hackcbit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001268379034-ho1ucnbabf1cqrqmkfunka4mq29m5cba.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hackcbit",
+            "certificate_hash": "98318da1ded5063bee677cc5f5009c6632b29096"
+          }
+        },
+        {
+          "client_id": "1001268379034-9eui5brtjot539ol1rbeurgqne5i9k8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYs1OSB_Wx-35FYJkYqS0-dn0acBSabUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001268379034-9eui5brtjot539ol1rbeurgqne5i9k8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
