@@ -10,9 +10,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class Home extends StatelessWidget {
+  String _url = "https://www.google.com/search?q=";
+
+  void _launchURL(String city) async => await canLaunch(_url)
+      ? await launch(_url + city)
+      : throw 'Could not launch $_url';
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LogoutCubit, LogoutState>(
@@ -131,7 +138,7 @@ class Home extends StatelessWidget {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Container(
-                                              height: 550,
+                                              height: 570,
                                               width: double.infinity,
                                               // decoration: BoxDecoration(
                                               //     border: Border.all(
@@ -250,6 +257,29 @@ class Home extends StatelessWidget {
                                                                               color: Colors.white),
                                                                         );
                                                                       })),
+                                                          SizedBox(
+                                                            height: 20,
+                                                          ),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              _launchURL(state
+                                                                  .weather
+                                                                  .areaName!);
+                                                            },
+                                                            child: Text(
+                                                                "More Info",
+                                                                style: GoogleFonts.montserrat(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        16,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .underline)),
+                                                          )
                                                         ],
                                                       ));
                                                 } else

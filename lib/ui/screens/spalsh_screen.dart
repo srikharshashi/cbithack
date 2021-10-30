@@ -3,6 +3,7 @@ import 'package:bloc_custom_firebase/logic/bloc/splash/splashscreen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -22,14 +23,18 @@ class SplashScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("SPLASH SCREEN"),
+                  Text(
+                    "Geo Dude",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 25, fontWeight: FontWeight.w600),
+                  ),
                   SizedBox(
                     height: 100,
                   ),
                   BlocBuilder<SplashscreenCubit, SplashscreenState>(
                       builder: (context, state) {
                     if (state is SplashscreenLoading)
-                      return SpinKitCubeGrid(color: Colors.black);
+                      return SpinKitCircle(color: Colors.black);
                     else if (state is ConnectivityError)
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +42,7 @@ class SplashScreen extends StatelessWidget {
                           Text(
                             "There was an error connecting to Internet",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w500),
                           ),
                           SizedBox(
                             height: 10,
